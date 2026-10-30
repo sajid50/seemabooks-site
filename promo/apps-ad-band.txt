@@ -1,0 +1,66 @@
+<section id="bkj-apps" style="background:#f6f1e7;padding:28px 16px;border-top:1px solid #e6dccb"><div class="sbx" aria-label="Apps and games by Seemabooks">
+<style>
+.sbx{--sbx-ink:#1d2b2a;--sbx-mute:#5d6b69;--sbx-line:#dfe6e4;--sbx-card:#fff;--sbx-accent:#0f5a4e;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--sbx-ink);max-width:880px;margin:16px auto;
+  container-type:inline-size;line-height:1.35}
+.sbx *{box-sizing:border-box}
+.sbx-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 8px}
+.sbx-head b{font-size:15px;letter-spacing:.02em}
+.sbx-head span{font-size:12px;color:var(--sbx-mute)}
+.sbx-show{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:800/390;background:#e8efed}
+.sbx-show a{position:absolute;inset:0;opacity:0;transition:opacity .6s}
+.sbx-show a.on{opacity:1}
+.sbx-show img{width:100%;height:100%;object-fit:cover;display:block}
+.sbx-dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:6px}
+.sbx-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.55);cursor:pointer;
+  box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.sbx-dots button.on{background:#fff}
+.sbx-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+@container (min-width:560px){.sbx-list{grid-template-columns:1fr 1fr}}
+.sbx-item{display:flex;gap:10px;align-items:center;background:var(--sbx-card);border:1px solid var(--sbx-line);border-radius:10px;padding:8px}
+.sbx-item>img{width:52px;height:52px;border-radius:12px;flex:none}
+.sbx-txt{min-width:0;flex:1}
+.sbx-txt b{display:block;font-size:14px}
+.sbx-txt small{display:block;font-size:12px;color:var(--sbx-mute);margin:1px 0 5px}
+.sbx-get{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.sbx-get a{display:inline-flex}
+.sbx-get img{height:28px;width:auto;display:block}
+.sbx-get img[src$=".png"]{height:40px;margin:-6px -5px}
+.sbx-get .sbx-txtlink{font-size:12px;color:var(--sbx-accent);text-decoration:underline}
+</style>
+<div class="sbx-head"><b>Apps &amp; games by Seemabooks</b><span>Free to try</span></div>
+<div class="sbx-show">
+  <a class="on" href="https://play.google.com/store/apps/details?id=net.sajidkhan.monsterhunt" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/promo/net.sajidkhan.monsterhunt.jpg" alt="Jungle Monster Hunt: hunt with crossbow and scope" loading="lazy"></a>
+  <a href="https://play.google.com/store/apps/details?id=net.sajidkhan.bubblebuddies" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/promo/net.sajidkhan.bubblebuddies.jpg" alt="Bubble Buddies: pop bubbles, learn ABCs and 123" loading="lazy"></a>
+  <a href="https://play.google.com/store/apps/details?id=net.sajidkhan.puzzlepals" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/promo/net.sajidkhan.puzzlepals.jpg" alt="Puzzle Pals: drag, snap and cheer" loading="lazy"></a>
+  <a href="https://play.google.com/store/apps/details?id=net.sajidkhan.quranverbs" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/promo/net.sajidkhan.quranverbs.jpg" alt="Quran Words: say a word of the Qur'an and find it" loading="lazy"></a>
+  <a href="https://play.google.com/store/apps/details?id=net.sajidkhan.juz30grammar" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/promo/net.sajidkhan.juz30grammar.jpg" alt="Juz 30 Grammar Analysis" loading="lazy"></a>
+  <div class="sbx-dots"></div>
+</div>
+<ul class="sbx-list">
+  <li class="sbx-item"><img src="https://www.seemabooks.com/img/icons/net.sajidkhan.monsterhunt.png" alt="">
+    <div class="sbx-txt"><b>Jungle Monster Hunt</b><small>3D crossbow hunt in the jungle &middot; ages 13+</small>
+    <div class="sbx-get"><a href="https://play.google.com/store/apps/details?id=net.sajidkhan.monsterhunt" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/badges/google-play.png" alt="Get it on Google Play"></a></div></div></li>
+  <li class="sbx-item"><img src="https://www.seemabooks.com/img/icons/net.sajidkhan.bubblebuddies.png" alt="">
+    <div class="sbx-txt"><b>Bubble Buddies</b><small>Bubble shooter for little ones &middot; ABCs and 123</small>
+    <div class="sbx-get"><a href="https://play.google.com/store/apps/details?id=net.sajidkhan.bubblebuddies" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/badges/google-play.png" alt="Get it on Google Play"></a><a href="https://apps.apple.com/app/id6821714050" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/badges/app-store.svg" alt="Download on the App Store"></a></div></div></li>
+  <li class="sbx-item"><img src="https://www.seemabooks.com/img/icons/net.sajidkhan.puzzlepals.png" alt="">
+    <div class="sbx-txt"><b>Puzzle Pals</b><small>Jigsaw puzzles for kids &middot; Easy to Hard</small>
+    <div class="sbx-get"><a href="https://play.google.com/store/apps/details?id=net.sajidkhan.puzzlepals" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/badges/google-play.png" alt="Get it on Google Play"></a><a href="https://apps.apple.com/app/id6821714044" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/badges/app-store.svg" alt="Download on the App Store"></a></div></div></li>
+  <li class="sbx-item"><img src="https://www.seemabooks.com/img/icons/net.sajidkhan.quranverbs.png" alt="">
+    <div class="sbx-txt"><b>Quran Words Voice Search</b><small>Say a Qur'an word: roots, meanings, grammar</small>
+    <div class="sbx-get"><a href="https://play.google.com/store/apps/details?id=net.sajidkhan.quranverbs" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/badges/google-play.png" alt="Get it on Google Play"></a><a href="https://apps.apple.com/app/id6807577839" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/badges/app-store.svg" alt="Download on the App Store"></a></div></div></li>
+  <li class="sbx-item"><img src="https://www.seemabooks.com/img/icons/net.sajidkhan.juz30grammar.png" alt="">
+    <div class="sbx-txt"><b>Juz 30 Grammar Analysis</b><small>Word-by-word grammar of Para &lsquo;Amma, with brief tafseer</small>
+    <div class="sbx-get"><a href="https://play.google.com/store/apps/details?id=net.sajidkhan.juz30grammar" target="_blank" rel="noopener"><img src="https://www.seemabooks.com/img/badges/google-play.png" alt="Get it on Google Play"></a><a class="sbx-txtlink" href="https://www.amazon.com/dp/B0HP8C1TZX" target="_blank" rel="noopener">Paperback</a></div></div></li>
+</ul>
+<script>
+(function(){var box=document.currentScript.parentNode,s=box.querySelector('.sbx-show'),a=s.querySelectorAll('a'),d=s.querySelector('.sbx-dots'),i=0,t;
+for(var k=0;k<a.length;k++){var b=document.createElement('button');b.setAttribute('aria-label','Show '+(k+1));(function(k){b.onclick=function(){go(k);restart();};})(k);d.appendChild(b);}
+var dots=d.querySelectorAll('button');
+function go(n){a[i].className='';dots[i].className='';i=(n+a.length)%a.length;a[i].className='on';dots[i].className='on';}
+function restart(){clearInterval(t);t=setInterval(function(){go(i+1);},5000);}
+go(0);restart();})();
+</script>
+</div>
+<script>(function(){var b=document.getElementById("bkj-apps"),f=document.querySelector("footer.site-footer");if(b&&f)f.parentNode.insertBefore(b,f);})();</script></section>
