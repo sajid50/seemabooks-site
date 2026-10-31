@@ -20,7 +20,7 @@
     '.ibq-toc li{margin:3px 0}.ibq-toc a{color:#146c60;text-decoration:none}.ibq-toc a:hover{text-decoration:underline}' +
     '.ibq-start{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:8px 0 0}' +
     '.ibq-start a{display:block;background:#fff;border:1px solid #e3d6b3;border-radius:8px;padding:10px 12px;color:#0d3432;text-decoration:none}' +
-    '.ibq-start a b{color:#146c60;display:block;margin-bottom:2px}';
+    '.ibq-start a{font-weight:normal}.ibq-start a b{color:#146c60;display:block;margin-bottom:2px;font-weight:bold}';
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
   function norm(u) { return (u || '').replace(/^https?:\/\/(www\.)?ibnqutb\.com/i, '').replace(/[?#].*$/, ''); }
@@ -32,14 +32,15 @@
 
   /* Home page: Start here */
   if (path === '/' || path === '') {
-    var main = document.querySelector('.blog-posts, #main');
+    var main = document.querySelector('.blog-posts');
     if (main) {
       var h = '<div class="k">Start here</div><div style="font-size:18px;font-weight:bold;color:#0d3432;margin-top:2px">Four free courses, each in reading order</div><div class="ibq-start">';
       ORDER.forEach(function (k) {
         h += '<a data-id="' + SERIES[k].id + '" href="#"><b>' + esc(SERIES[k].name) + '</b>' + esc(SERIES[k].who) + '</a>';
       });
       var box = el('div', 'ibq-nav', h + '</div>');
-      main.parentNode.insertBefore(box, main);
+      box.style.margin = '0 0 24px';
+      main.insertBefore(box, main.firstChild);
       [].forEach.call(box.querySelectorAll('a[data-id]'), function (a) {
         fetch(feedUrl(a.getAttribute('data-id'))).then(function (r) { return r.json(); }).then(function (d) {
           a.href = d.entry.link.filter(function (l) { return l.rel === 'alternate'; })[0].href;
