@@ -61,10 +61,16 @@
   /* What's on this page */
   /* a heading that directly follows another (no text between, e.g. English, Arabic and transliteration
      lines of one Word heading) is part of the same section */
+  function text(x) {
+    var c = x.cloneNode(true);
+    [].forEach.call(c.querySelectorAll('script,style,ins'), function (s) { s.remove(); });
+    return c.textContent.replace(/\s+/g, ' ').trim();
+  }
   var hs = [], last = null;
   [].forEach.call(body.querySelectorAll('h1,h2,h3'), function (x) {
-    var t = x.textContent.replace(/\s+/g, ' ').trim();
-    if (t.length <= 2 || x.closest('.ibq-pdf')) return;
+    var t = text(x);
+    /* Word-pasted posts sometimes mark whole sentences as headings: leave those out */
+    if (t.length <= 2 || t.length > 90 || /[:.]$/.test(t) || x.closest('.ibq-pdf')) return;
     var p = x.previousElementSibling;
     while (p && !p.textContent.trim() && !p.querySelector('img,table')) p = p.previousElementSibling;
     if (last && p === last.el) { last.el = x; last.t += ' ' + t; return; }
