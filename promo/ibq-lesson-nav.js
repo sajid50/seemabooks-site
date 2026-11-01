@@ -1,5 +1,5 @@
 /* IBQ lesson nav (31 Oct 2026): "What's on this page" box, series Previous/Next from each series'
-   "Contents and Reading Order" post, and a "Start here" box on the home page.
+   "Contents and Reading Order" post, a "Start here" box on the home page, and the series' app card under Previous/Next.
    Lesson order = the order of links in the contents post, so editing that post re-orders everything. */
 (function () {
   var SERIES = {
@@ -7,6 +7,13 @@
     'Nahw Meer': { id: '8161175783613557667', name: 'Nahw Meer in English', who: 'The classic primer of Arabic sentences, chapter by chapter.' },
     'Sarf and Nahw Summary': { id: '7801389540258622150', name: 'Sarf and Nahw Summary', who: 'A quick review of the whole of Qur\'anic grammar, with word lists.' },
     'Tafseer Nabaa to Infitaar': { id: '6586274595462589579', name: 'Grammatical Tafseer of Juz 30', who: 'Read Juz 30 word by word, with the grammar of every verse.' }
+  };
+  /* the app that goes with each series: one card under the Previous/Next box (1 Nov 2026) */
+  var APP = {
+    'Arabic Grammar for Beginners': { pkg: 'com.app.arabicgrammarp', ios: '6746101537', name: 'Arabic Grammar for Beginners', d: 'This whole course as a book on your phone, offline. The first 3 chapters are free.' },
+    'Nahw Meer': { pkg: 'com.app.nahwmeerp', ios: '6471644332', name: 'Nahw Meer: An English Guide to Arabic Sentences', d: 'Read the whole of Nahw Meer on your phone, offline. The first 2 chapters are free.' },
+    'Sarf and Nahw Summary': { pkg: 'com.app.qgrammarp', ios: '6752818977', name: 'Quran Grammar: Sarf & Nahw', d: 'The whole summary on your phone, offline. The first 2 chapters are free.' },
+    'Tafseer Nabaa to Infitaar': { pkg: 'com.app.darsigrammarp', ios: null, name: 'Darsi Grammar: Juz 30 Part 1', d: 'These five surahs word by word, as a book on your phone, offline.' }
   };
   var ORDER = ['Arabic Grammar for Beginners', 'Nahw Meer', 'Sarf and Nahw Summary', 'Tafseer Nabaa to Infitaar'];
   var CSS = '.ibq-nav{background:#fbf6ec;border:1px solid #d6b25e;border-radius:8px;margin:20px 0;padding:14px 18px;font-size:15px;line-height:1.45}' +
@@ -20,12 +27,24 @@
     '.ibq-toc li{margin:3px 0}.ibq-toc a{color:#146c60;text-decoration:none}.ibq-toc a:hover{text-decoration:underline}' +
     '.ibq-start{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:8px 0 0}' +
     '.ibq-start a{display:block;background:#fff;border:1px solid #e3d6b3;border-radius:8px;padding:10px 12px;color:#0d3432;text-decoration:none}' +
+    '.ibq-app{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #e3d6b3;border-radius:8px;margin:-8px 0 20px;padding:12px 16px;font-size:15px;line-height:1.4}' +
+    '.ibq-app img{width:56px;height:56px;border-radius:12px;flex:none}.ibq-app>div{flex:1;min-width:0}' +
+    '.ibq-app b{color:#0d3432}.ibq-app .k{color:#6b6250;font-size:12px;letter-spacing:.08em;text-transform:uppercase}' +
+    '.ibq-app a{display:inline-block;margin:6px 12px 0 0;color:#146c60;font-weight:bold;text-decoration:none}.ibq-app a:hover{text-decoration:underline}' +
     '.ibq-start a{font-weight:normal}.ibq-start a b{color:#146c60;display:block;margin-bottom:2px;font-weight:bold}';
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
   function norm(u) { return (u || '').replace(/^https?:\/\/(www\.)?ibnqutb\.com/i, '').replace(/[?#].*$/, ''); }
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function appCard(k) {
+    var A = APP[k]; if (!A) return null;
+    var h = '<img src="https://www.seemabooks.com/img/icons/' + A.pkg + '.png" alt="" loading="lazy"><div>' +
+      '<div class="k">The app for this course</div><b>' + esc(A.name) + '</b><br>' + esc(A.d) + '<br>' +
+      '<a href="https://play.google.com/store/apps/details?id=' + A.pkg + '" target="_blank" rel="noopener">Google Play →</a>' +
+      (A.ios ? '<a href="https://apps.apple.com/app/id' + A.ios + '" target="_blank" rel="noopener">App Store →</a>' : '') + '</div>';
+    return el('div', 'ibq-app', h);
+  }
   function feedUrl(id) { return '/feeds/posts/default/' + id + '?alt=json'; }
 
   var path = norm(location.href);
@@ -114,6 +133,7 @@
       h = '<div class="k">' + esc(S.name) + ' &middot; ' + list.length + ' lessons</div>' +
         '<div class="row"><div>New to this course?</div><div class="nx">' + link(list[0], 'Start with lesson 1: ' + title[list[0]] + ' →') + '</div></div>';
       body.appendChild(el('div', 'ibq-nav', h));
+      if (appCard(key)) body.appendChild(appCard(key));
       return;
     }
     var prev = list[i - 1], next = list[i + 1];
@@ -121,6 +141,7 @@
       '<div class="row"><div>' + (prev ? '← Previous<br>' + link(prev, title[prev]) : link(cUrl, '← Contents and reading order')) + '</div>' +
       '<div class="nx">' + (next ? 'Next lesson →<br>' + link(next, title[next]) : 'You have finished the course.<br>' + link(cUrl, 'Back to the contents')) + '</div></div>';
     body.appendChild(el('div', 'ibq-nav', h));
+    if (appCard(key)) body.appendChild(appCard(key));
     afterBand(el('div', 'ibq-strip', esc(S.name) + ' &middot; lesson ' + (i + 1) + ' of ' + list.length +
       (next ? ' &middot; ' + link(next, 'Next lesson →') : '') + ' &middot; ' + link(cUrl, 'Contents')));
   }).catch(function () {});
