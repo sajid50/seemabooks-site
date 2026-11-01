@@ -31,6 +31,8 @@
     '.ibq-app img{width:56px;height:56px;border-radius:12px;flex:none}.ibq-app>div{flex:1;min-width:0}' +
     '.ibq-app b{color:#0d3432}.ibq-app .k{color:#6b6250;font-size:12px;letter-spacing:.08em;text-transform:uppercase}' +
     '.ibq-app a{display:inline-block;margin:6px 12px 0 0;color:#146c60;font-weight:bold;text-decoration:none}.ibq-app a:hover{text-decoration:underline}' +
+    '.ibq-give{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:#0d3432;color:#f3ead3;border-radius:8px;margin:0 0 14px;padding:10px 16px;font-size:15px;line-height:1.4}' +
+    '.ibq-give a{background:#d6b25e;color:#0d3432;font-weight:bold;text-decoration:none;border-radius:6px;padding:7px 14px;white-space:nowrap}.ibq-give a:hover{background:#e6c776}' +
     '.ibq-start a{font-weight:normal}.ibq-start a b{color:#146c60;display:block;margin-bottom:2px;font-weight:bold}';
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
@@ -60,6 +62,9 @@
       var box = el('div', 'ibq-nav', h + '</div>');
       box.style.margin = '0 0 24px';
       main.insertBefore(box, main.firstChild);
+      /* owner (1 Nov 2026): the PayPal button from the end of each lesson, at the top of the home page too */
+      main.insertBefore(el('div', 'ibq-give', '<span>These lessons are free. If they have helped you, a gift of any amount helps keep them free.</span>' +
+        '<a href="https://www.paypal.biz/sajid50" target="_blank" rel="noopener">Support via PayPal</a>'), box);
       [].forEach.call(box.querySelectorAll('a[data-id]'), function (a) {
         fetch(feedUrl(a.getAttribute('data-id'))).then(function (r) { return r.json(); }).then(function (d) {
           a.href = d.entry.link.filter(function (l) { return l.rel === 'alternate'; })[0].href;
