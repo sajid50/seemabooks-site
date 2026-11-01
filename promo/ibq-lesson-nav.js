@@ -76,6 +76,10 @@
 
   var body = document.querySelector('.post-body');
   if (!body || !/\.html$/.test(path) || path.indexOf('/p/') === 0) return;
+
+  /* owner (1 Nov 2026): the Substack member perk, added to the theme's "Become a member" line */
+  var join = document.querySelector('.ibq-cta a[href*="substack.com/subscribe"]');
+  if (join) join.parentNode.insertBefore(el('span', null, 'Members also get <b>five of our Android apps, fully unlocked</b>. '), join);
   var band = body.firstElementChild && /background:\s*#0d3432/i.test(body.firstElementChild.getAttribute('style') || '') ? body.firstElementChild : null;
   function afterBand(node) {
     var ref = band ? band.nextSibling : body.firstChild;
