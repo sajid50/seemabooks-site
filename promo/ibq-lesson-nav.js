@@ -2,6 +2,8 @@
    "Contents and Reading Order" post, a "Start here" box on the home page, and the series' app card under Previous/Next.
    Lesson order = the order of links in the contents post, so editing that post re-orders everything. */
 (function () {
+  /* store-button clicks for Google Analytics (24 Nov 2026): one shared file, see promo/serve/store-clicks.js */
+  (function () { var t = document.createElement('script'); t.src = 'https://www.seemabooks.com/promo/store-clicks.js'; t.async = true; document.head.appendChild(t); })();
   var SERIES = {
     'Arabic Grammar for Beginners': { id: '4723648686222777294', name: 'Arabic Grammar for Beginners', who: 'New to Arabic grammar? Start here: letters, nouns, verbs and the first sentences.' },
     'Nahw Meer': { id: '8161175783613557667', name: 'Nahw Meer in English', who: 'The classic primer of Arabic sentences, chapter by chapter.' },
