@@ -65,6 +65,11 @@
       /* owner (1 Nov 2026): the PayPal button from the end of each lesson, at the top of the home page too */
       main.insertBefore(el('div', 'ibq-give', '<span>These lessons are free. If they have helped you, a gift of any amount helps keep them free.</span>' +
         '<a href="https://www.paypal.biz/sajid50" target="_blank" rel="noopener">Support via PayPal</a>'), box);
+      /* owner (24 Nov 2026): "New books and apps" at the very top of the home page. The block is
+         seemabooks.com/promo/new-band.txt (source: seemabooks-site/promo/serve/new-band.txt); change it there. */
+      fetch('https://www.seemabooks.com/promo/new-band.txt').then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) {
+        if (t) main.insertBefore(el('div', 'ibq-new', t), main.firstChild);
+      }).catch(function () {});
       [].forEach.call(box.querySelectorAll('a[data-id]'), function (a) {
         fetch(feedUrl(a.getAttribute('data-id'))).then(function (r) { return r.json(); }).then(function (d) {
           a.href = d.entry.link.filter(function (l) { return l.rel === 'alternate'; })[0].href;
