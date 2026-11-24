@@ -33,6 +33,8 @@
     '.ibq-app a{display:inline-block;margin:6px 12px 0 0;color:#146c60;font-weight:bold;text-decoration:none}.ibq-app a:hover{text-decoration:underline}' +
     '.ibq-give{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:#0d3432;color:#f3ead3;border-radius:8px;margin:0 0 14px;padding:10px 16px;font-size:15px;line-height:1.4}' +
     '.ibq-give a{background:#d6b25e;color:#0d3432;font-weight:bold;text-decoration:none;border-radius:6px;padding:7px 14px;white-space:nowrap}.ibq-give a:hover{background:#e6c776}' +
+    /* the "New books and apps" heading sits on the dark banner at the top of the home page: light text on its own dark chip */
+    '.ibq-new .sbn .sbn-h{display:inline-block;background:#0d3432;color:#f3ead3;padding:5px 14px;border-radius:6px}' +
     '.ibq-start a{font-weight:normal}.ibq-start a b{color:#146c60;display:block;margin-bottom:2px;font-weight:bold}';
   var st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
